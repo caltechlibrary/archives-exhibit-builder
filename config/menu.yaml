@@ -1,0 +1,11 @@
+# config/menu.yaml
+
+menu:
+  - title: "Home"
+    url: "index.html"
+  - title: "About"
+    url: "about.html"
+  - title: "Contact"
+    url: "contact.html"
+
+    
