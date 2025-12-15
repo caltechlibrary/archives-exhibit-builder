@@ -109,10 +109,29 @@ This script will:
 
 ## Launch and Deployment
 
-When you're ready to launch your exhibit, contact the Digital Library Development (DLD) team for URL assignment and GitHub Pages configuration. They will assist with:
+This template includes an automated GitHub Actions workflow that builds and deploys your site to GitHub Pages whenever you push changes to the main branch.
 
-- Setting up GitHub Pages for your repository
-- Configuring a custom subdomain if needed
-- Ensuring proper deployment settings
+### Setting Up GitHub Pages
 
-**Contact**: Digital Library Development team for deployment assistance
+1. **Enable GitHub Pages** in your repository:
+   - Go to **Settings** → **Pages**
+   - Under "Source", select **Deploy from a branch**
+   - Choose the `gh-pages` branch and `/ (root)` folder
+   - Click **Save**
+
+2. **Push your changes** to the main branch - the workflow will automatically:
+   - Install Pandoc
+   - Run `./build.sh` to generate HTML files
+   - Deploy the built site to the `gh-pages` branch
+   - Publish to GitHub Pages
+
+3. **View your site** at `https://[your-username].github.io/[repository-name]/`
+
+### Custom Domain Setup
+
+For a custom Caltech subdomain (e.g., `your-exhibit.archives.caltech.edu`), contact the Digital Library Development (DLD) team. They will assist with:
+
+- Configuring DNS settings for your custom domain
+- Setting up the custom domain in your GitHub Pages settings
+
+**Contact**: Digital Library Development team for custom domain setup
