@@ -5,7 +5,7 @@
     <title>$exhibit_title$</title>
     <meta name="author" content="$author$">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   
     <!-- Note: external CSS and JS managed via Caltech Library Design System.
@@ -50,7 +50,7 @@
         $if(feature_color)$ has-color$endif$
         $if(feature_overlay)$ has-overlay$endif$"
         style="
-          $if(feature_image)$--feature-image: url('/images/$feature_image$');$endif$
+          $if(feature_image)$--feature-image: url('images/$feature_image$');$endif$
           $if(feature_color)$--feature-color: $feature_color$;$endif$
           $if(feature_overlay)$--feature-overlay: $feature_overlay$;$endif$
         ">

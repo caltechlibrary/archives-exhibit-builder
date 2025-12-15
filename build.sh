@@ -35,6 +35,14 @@ for input_path in content/*.md; do
     --toc --toc-depth=2 \
     --wrap=auto \
     -o "$output_path"
+
+  # Fix paths for demo files (add ../ prefix for subdirectory)
+  if [[ "$filename" == demo-* ]]; then
+    sed -i '' 's|href="styles/|href="../styles/|g' "$output_path"
+    sed -i '' "s|url('images/|url('../images/|g" "$output_path"
+    echo "Fixed paths for demo file: $output_path"
+  fi
+
   echo "Built $output_path"
 done
 
