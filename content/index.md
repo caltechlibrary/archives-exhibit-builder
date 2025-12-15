@@ -13,7 +13,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 **Example Image:**
 
-![caption for this image](/images/demo-01.jpg){.img-medium .frame .center}
+![caption for this image](images/demo-01.jpg){.img-medium .frame .center}
 
 **Example Link:**
 
