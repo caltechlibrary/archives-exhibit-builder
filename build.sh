@@ -38,8 +38,9 @@ for input_path in content/*.md; do
 
   # Fix paths for demo files (add ../ prefix for subdirectory)
   if [[ "$filename" == demo-* ]]; then
-    sed -i '' 's|href="styles/|href="../styles/|g' "$output_path"
-    sed -i '' "s|url('images/|url('../images/|g" "$output_path"
+    # Use perl for cross-platform compatibility (macOS and Linux)
+    perl -i -pe 's|href="styles/|href="../styles/|g' "$output_path"
+    perl -i -pe "s|url\('images/|url\('../images/|g" "$output_path"
     echo "Fixed paths for demo file: $output_path"
   fi
 
