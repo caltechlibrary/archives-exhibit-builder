@@ -41,6 +41,7 @@ for input_path in content/*.md; do
     # Use perl for cross-platform compatibility (macOS and Linux)
     perl -i -pe 's|href="styles/|href="../styles/|g' "$output_path"
     perl -i -pe "s|url\('images/|url\('../images/|g" "$output_path"
+    perl -i -pe 's|src="images/|src="../images/|g' "$output_path"
     echo "Fixed paths for demo file: $output_path"
   fi
 
