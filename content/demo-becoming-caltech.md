@@ -15,7 +15,7 @@ In the 1910s and 1920s, Throop dramatically reinvented itself, first focusing it
 
 On February 10, 1920, Throop’s trustees acknowledged this transformation by changing the institution’s name once again. Throop became the California Institute of Technology. 
 
-![caption for this image](/images/demo-01.jpg){.img-medium .frame .left}
+![caption for this image](images/demo-01.jpg){.img-medium .frame .left}
 
 On February 10, 1920, Throop’s trustees acknowledged this transformation by changing the institution’s name once again. Throop became the [California Institute of Technology](https://www.caltech.edu/).
 
