@@ -1,4 +1,6 @@
 # config/menu.yaml
+# Menu configuration for exhibit navigation
+# Each item requires: title (display text) and url (relative path)
 
 menu:
   - title: "Home"
@@ -7,5 +9,3 @@ menu:
     url: "about.html"
   - title: "Contact"
     url: "contact.html"
-
-    

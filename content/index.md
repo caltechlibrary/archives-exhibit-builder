@@ -1,28 +1,26 @@
 ---
-exhibit_title: "Becoming Caltech"
-exhibit_subtitle: "Building a Research Community, 1910 – 1930"
-organization: "Caltech Archives & Special Collections" 
+exhibit_title: "Title of the Exhibit"
+exhibit_subtitle: "Subtitle of the Exhibit"
+organization: "Caltech Archives & Special Collections"
 feature_image: "feature.webp"
-feature_color: "#000000"
-feature_overlay: "#70421480"
+feature_color: "#000000" 
+feature_overlay: "#001F3F80"
 ---
 
 ## Overview
 
-Since 1978, the Caltech Archives has conducted over 260 oral history interviews with
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+**Example Image:**
 
-In 1891, Pasadena minister and politician Amos Throop founded Throop University. Soon renamed Throop Polytechnic Institute, the school offered a wide range of courses, from elementary school to “manual arts” such as carpentry and sewing.
+![caption for this image](/images/demo-01.jpg){.img-medium .frame .center}
 
-In the 1910s and 1920s, Throop dramatically reinvented itself, first focusing its curriculum on engineering, then expanding into a research institute. The school began building its current campus, recruited renowned faculty, constructed sophisticated laboratories, trained students to become leading researchers, and established new relationships with industry and government.
+**Example Link:**
 
-![Alt text](images/demo-01.jpg){.img-medium .frame .left}
+[California Institute of Technology](https://www.caltech.edu/).
 
-On February 10, 1920, Throop’s trustees acknowledged this transformation by changing the institution’s name once again. Throop became the [California Institute of Technology](https://www.caltech.edu/).
+## Section One
 
-## Becoming
-In 1904, astrophysicist George Ellery Hale moved to Pasadena to found and direct Mount Wilson Observatory. Three years later, he joined Throop Polytechnic Institute’s board of trustees and began to reinvent the institution. “It would be far better to do some one thing extremely well than to teach such a variety of subjects in a mediocre way,” wrote Hale, and that one thing was to be engineering. Hale recruited a new president, James Scherer, under whom the school shed courses to focus on mechanical and electrical engineering. In another narrowing, in 1910 Scherer stopped admitting women as students, a policy the Institute would reverse for graduate students in 1953 and for undergraduates in 1970.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-In 1910, Throop also moved to a new campus, where Caltech still stands today. Local architects Myron Hunt and Elmer Grey designed the first plans for the campus and its first building, Pasadena Hall. Later, Hale was impressed by the Spanish Colonial Revival style that New York architect Bertram Goodhue developed for the 1915 Panama-California Exposition in San Diego’s Balboa Park; he persuaded the Throop trustees to hire Goodhue, whose vision for the campus would guide its development for decades to come.
-
-World War I catalyzed Throop’s next transformation. An advocate of “patriotic preparedness,” Scherer added military training to the curriculum. Meanwhile, Hale organized the National Research Council in Washington, bringing scientists together to pursue research on subjects relevant to the war. In addition to Hale, its leaders included chemist Arthur Amos Noyes and physicist Robert Millikan, both of whom would permanently join a growing Throop after the war.
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?

@@ -17,12 +17,12 @@ Base
 - - - - */
 
 html {
-  margin: 0px;
+  margin: 0;
   font-size: 16px;
   scroll-behavior: smooth;
 }
 
-html, body {
+body {
   margin: 0;
   padding: 0;
 }
@@ -83,18 +83,44 @@ p {
   margin-bottom: 1rem;
 }
 
-/* - - - 
+/* - - -
 LOGO
 - - - - */
 
 #logo {
-  width: 100%;      
+  width: 100%;
   max-width: 400px;
   fill: transparent;
+  overflow: visible;
+}
+
+/* SVG logo hover and focus states */
+#logo rect {
+  fill: transparent;
+  stroke: transparent;
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+#logo a:hover > rect {
+  fill: rgba(244, 93, 44, 0.25);
+}
+
+#logo a:focus-visible > rect {
+  stroke: rgba(244, 93, 44, 0.25);
+  stroke-width: 3px;
+}
+
+#logo a {
+  outline: none;
 }
 
 .logo-caltech {
   fill: var(--color-brand-orange);
+  transition: fill 0.2s ease;
+}
+
+#logo a:first-of-type:hover > .logo-caltech {
+  fill: #000000;
 }
 
 .logo-archives {
@@ -102,7 +128,7 @@ LOGO
 }
 
 .logo svg {
-  width: 100%;                 
+  width: 100%;
   height: auto;
   display: block;
 }
@@ -198,12 +224,18 @@ nav.main-nav {
 
 .menu-toggle {
   background: none;
-  border: 1px solid #ccc; 
+  border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 1.5rem;
   cursor: pointer;
-  padding: 0 .3rem .1rem .3rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15); 
+  padding: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-toggle svg {
+  display: block;
 }
 
 .menu-items {
@@ -221,7 +253,6 @@ nav.main-nav {
   transition: opacity 0.3s ease, transform 0.3s ease;
   opacity: 0;
   transform: translateY(-5px);
-  will-change: opacity, transform;
 }
 
 .menu-items li a {
@@ -242,8 +273,20 @@ nav.main-nav {
   transform: translateY(0);
 }
 
-.menu-items li a:focus {
-  outline: 2px solid var(--color-accent-dark);
+/* Global focus styles for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid rgba(244, 93, 44, 0.25);
+  outline-offset: 2px;
+}
+
+/* Ensure focus is visible even with custom button styles */
+.menu-toggle:focus-visible {
+  outline: 3px solid rgba(244, 93, 44, 0.25);
   outline-offset: 2px;
 }
 
@@ -503,3 +546,34 @@ figure img {
   }
 }
 
+/* - - -
+ACCESSIBILITY
+- - - - */
+
+/* Skip link for keyboard navigation */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>$exhibit_title$</title>
-    <meta name="author" content="$author$">
+    <title>Becoming Caltech</title>
+    <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -39,37 +39,93 @@
             </svg>
           </button>
           <ul id="menu" class="menu-items">
-            $for(menu)$
-              <li><a href="$menu.url$">$menu.title$</a></li>
-            $endfor$
-          </ul>
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="about.html">About</a></li>
+                          <li><a href="contact.html">Contact</a></li>
+                      </ul>
         </nav>
       </div>
       <div class="banner
-        $if(feature_image)$ has-image$endif$
-        $if(feature_color)$ has-color$endif$
-        $if(feature_overlay)$ has-overlay$endif$"
+         has-image
+         has-color
+         has-overlay"
         style="
-          $if(feature_image)$--feature-image: url('/images/$feature_image$');$endif$
-          $if(feature_color)$--feature-color: $feature_color$;$endif$
-          $if(feature_overlay)$--feature-overlay: $feature_overlay$;$endif$
+          --feature-image: url('/images/feature.webp');
+          --feature-color: #000000;
+          --feature-overlay: #001F3F80;
         ">
 
         <div class="banner-inner">
-          <h1>$exhibit_title$</h1>
-          $if(exhibit_subtitle)$
-          <h2 class="subtitle">$exhibit_subtitle$</h2>
-          $endif$
-        </div>
+          <h1>Becoming Caltech</h1>
+                    <h2 class="subtitle">Building a Research Community,
+1910 – 1930</h2>
+                  </div>
       </div>
     </header>
 
-    <nav id="topic-nav" class="$topic-nav$">
-        $toc$
+    <nav id="topic-nav" class="">
+        <ul>
+        <li><a href="#overview" id="toc-overview">Overview</a></li>
+        <li><a href="#becoming" id="toc-becoming">Becoming</a></li>
+        </ul>
       </nav>
     
       <main id="main-content">
-        $body$
+        <h2 id="overview">Overview</h2>
+        <p>In 1891, Pasadena minister and politician Amos Throop founded
+        Throop University. Soon renamed Throop Polytechnic Institute,
+        the school offered a wide range of courses, from elementary
+        school to “manual arts” such as carpentry and sewing.</p>
+        <p>In the 1910s and 1920s, Throop dramatically reinvented
+        itself, first focusing its curriculum on engineering, then
+        expanding into a research institute. The school began building
+        its current campus, recruited renowned faculty, constructed
+        sophisticated laboratories, trained students to become leading
+        researchers, and established new relationships with industry and
+        government.</p>
+        <p>On February 10, 1920, Throop’s trustees acknowledged this
+        transformation by changing the institution’s name once again.
+        Throop became the California Institute of Technology.</p>
+        <figure class="left">
+        <img src="/images/demo-01.jpg" class="img-medium frame"
+        alt="caption for this image" />
+        <figcaption aria-hidden="true">caption for this
+        image</figcaption>
+        </figure>
+        <p>On February 10, 1920, Throop’s trustees acknowledged this
+        transformation by changing the institution’s name once again.
+        Throop became the <a href="https://www.caltech.edu/">California
+        Institute of Technology</a>.</p>
+        <h2 id="becoming">Becoming</h2>
+        <p>In 1904, astrophysicist George Ellery Hale moved to Pasadena
+        to found and direct Mount Wilson Observatory. Three years later,
+        he joined Throop Polytechnic Institute’s board of trustees and
+        began to reinvent the institution. “It would be far better to do
+        some one thing extremely well than to teach such a variety of
+        subjects in a mediocre way,” wrote Hale, and that one thing was
+        to be engineering. Hale recruited a new president, James
+        Scherer, under whom the school shed courses to focus on
+        mechanical and electrical engineering. In another narrowing, in
+        1910 Scherer stopped admitting women as students, a policy the
+        Institute would reverse for graduate students in 1953 and for
+        undergraduates in 1970.</p>
+        <p>In 1910, Throop also moved to a new campus, where Caltech
+        still stands today. Local architects Myron Hunt and Elmer Grey
+        designed the first plans for the campus and its first building,
+        Pasadena Hall. Later, Hale was impressed by the Spanish Colonial
+        Revival style that New York architect Bertram Goodhue developed
+        for the 1915 Panama-California Exposition in San Diego’s Balboa
+        Park; he persuaded the Throop trustees to hire Goodhue, whose
+        vision for the campus would guide its development for decades to
+        come.</p>
+        <p>World War I catalyzed Throop’s next transformation. An
+        advocate of “patriotic preparedness,” Scherer added military
+        training to the curriculum. Meanwhile, Hale organized the
+        National Research Council in Washington, bringing scientists
+        together to pursue research on subjects relevant to the war. In
+        addition to Hale, its leaders included chemist Arthur Amos Noyes
+        and physicist Robert Millikan, both of whom would permanently
+        join a growing Throop after the war.</p>
       </main>
 
     <footer-global></footer-global>
