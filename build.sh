@@ -7,25 +7,27 @@ IFS=$'\n\t'
 
 echo "Building all Markdown files in content/ ..."
 
-# Create demo directory if it doesn't exist
-mkdir -p demo
+# Clean & recreate _site/ directory
+rm -rf "_site"
+mkdir -p "_site/styles"
+mkdir -p "_site/images"
 
+# Copy static assets
+echo "Copying static assets..."
+cp styles/style.css "_site/styles/"
+cp -r images/* "_site/images/"
+
+# Build all Markdown files to _site/ root
 shopt -s nullglob
 for input_path in content/*.md; do
   filename=$(basename "$input_path")
   basename="${filename%.md}"
 
-  # Build demo files (demo-*.md) to demo/ directory
-  if [[ "$filename" == demo-* ]]; then
-    # Remove 'demo-' prefix from output filename
-    output_filename="${basename#demo-}.html"
-    output_path="demo/${output_filename}"
-    echo "Building demo: $input_path -> $output_path"
-  else
-    # Build regular files to root
-    output_path="${basename}.html"
-    echo "Building $input_path -> $output_path"
-  fi
+  # Remove 'demo-' prefix if present
+  output_filename="${basename#demo-}.html"
+  output_path="_site/${output_filename}"
+
+  echo "Building $input_path -> $output_path"
 
   pandoc "$input_path" \
     --lua-filter="figures.lua" \
@@ -36,16 +38,8 @@ for input_path in content/*.md; do
     --wrap=auto \
     -o "$output_path"
 
-  # Fix paths for demo files (add ../ prefix for subdirectory)
-  if [[ "$filename" == demo-* ]]; then
-    # Use perl for cross-platform compatibility (macOS and Linux)
-    perl -i -pe 's|href="styles/|href="../styles/|g' "$output_path"
-    perl -i -pe "s|url\('images/|url\('../images/|g" "$output_path"
-    perl -i -pe 's|src="images/|src="../images/|g' "$output_path"
-    echo "Fixed paths for demo file: $output_path"
-  fi
-
   echo "Built $output_path"
 done
 
 echo "All Markdown files built successfully!"
+echo "_site/ directory ready for deployment"

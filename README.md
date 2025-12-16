@@ -101,11 +101,13 @@ To generate HTML from your Markdown content:
 ```
 
 This script will:
-1. Process all `.md` files in the `content/` directory
-2. Skip any files starting with `demo-` (example files only)
-3. Apply the Pandoc template and Lua filters
-4. Generate corresponding `.html` files in the root directory
-5. Demo files (e.g., `demo-becoming-caltech.md`) are built to the `demo/` directory for reference
+1. Clean and recreate the `_site/` directory
+2. Copy static assets (CSS and images) to `_site/`
+3. Process all `.md` files in the `content/` directory
+4. Apply the Pandoc template and Lua filters
+5. Generate HTML files in the `_site/` directory
+
+All generated files are placed in the `_site/` directory, which is excluded from version control via `.gitignore`. This follows the Jekyll convention for static site generators.
 
 ## Launch and Deployment
 
@@ -121,8 +123,8 @@ This template includes an automated GitHub Actions workflow that builds and depl
 
 2. **Push your changes** to the main branch - the workflow will automatically:
    - Install Pandoc
-   - Run `./build.sh` to generate HTML files
-   - Deploy the built site to the `gh-pages` branch
+   - Run `./build.sh` to generate the `_site/` directory
+   - Deploy the `_site/` directory contents to the `gh-pages` branch
    - Publish to GitHub Pages
 
 3. **View your site** at `https://[your-username].github.io/[repository-name]/`
