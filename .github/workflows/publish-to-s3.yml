@@ -1,4 +1,4 @@
-name: Publish to S3
+name: Publish Site (Manual)
 
 on:
   workflow_dispatch:
