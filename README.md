@@ -111,9 +111,16 @@ All generated files are placed in the `_site/` directory, which is excluded from
 
 ## Launch and Deployment
 
-This template includes an automated GitHub Actions workflow that builds and deploys your site to GitHub Pages whenever you push changes to the main branch.
+This template uses a **two-stage publishing workflow**:
 
-### Setting Up GitHub Pages
+1. **Staging (GitHub Pages)** - Automatic preview site for reviewing changes
+2. **Production (S3)** - Manual publish to the live site when ready
+
+### Stage 1: Automatic Staging Deployment
+
+Every time you push changes to the main branch, the site automatically deploys to GitHub Pages as a preview/staging site.
+
+**Setup:**
 
 1. **Enable GitHub Pages** in your repository:
    - Go to **Settings** → **Pages**
@@ -127,7 +134,32 @@ This template includes an automated GitHub Actions workflow that builds and depl
    - Deploy the `_site/` directory contents to the `gh-pages` branch
    - Publish to GitHub Pages
 
-3. **View your site** at `https://[your-username].github.io/[repository-name]/`
+3. **Preview your site** at `https://[your-org].github.io/[repository-name]/`
+
+This staging site updates automatically with every commit, allowing you to review changes before publishing to production.
+
+### Stage 2: Manual Production Deployment
+
+When you're ready to publish your exhibit to the live production site, manually trigger the S3 publish workflow.
+
+**How to Publish:**
+
+1. Go to the **Actions** tab in your repository
+2. Click on **"Publish to S3"** in the left sidebar
+3. Click the **"Run workflow"** button
+4. Click **"Run workflow"** to confirm
+
+The workflow will:
+- Sync the `gh-pages` branch to S3
+- Create a CloudFront invalidation to update the CDN
+- Display the live site URL
+
+**Your exhibit will be live at:**
+```
+https://digital.archives.caltech.edu/exhibits/[repository-name]/
+```
+
+The repository name becomes the URL slug for your exhibit (e.g., repository `becoming-caltech` → `/exhibits/becoming-caltech/`).
 
 ### Custom Domain Setup
 

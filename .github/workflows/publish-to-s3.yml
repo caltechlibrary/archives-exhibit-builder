@@ -1,0 +1,46 @@
+name: Publish to S3
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish-to-s3:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get repository name
+        id: repo-name
+        run: echo "name=${GITHUB_REPOSITORY#*/}" >> $GITHUB_OUTPUT
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.EXHIBITSPUBLISHING_AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.EXHIBITSPUBLISHING_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+
+      - name: Sync to S3
+        run: |
+          aws s3 sync . s3://digital.archives.caltech.edu/exhibits/${{ steps.repo-name.outputs.name }}/ \
+            --delete \
+            --exclude ".git/*" \
+            --exclude ".github/*"
+
+      - name: Create CloudFront invalidation
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id E21BKF4MB4RMMD \
+            --paths "/exhibits/${{ steps.repo-name.outputs.name }}/*"
+
+      - name: Display published URL
+        run: |
+          echo "✅ Site published successfully!"
+          echo "🌐 Live at: https://digital.archives.caltech.edu/exhibits/${{ steps.repo-name.outputs.name }}/"
