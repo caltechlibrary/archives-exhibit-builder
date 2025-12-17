@@ -1,17 +1,18 @@
-# Pandoc Template for Online Exhibits
+# Overview
 
-This is a template repository that allows Caltech Archives & Special Collections to create exhibits hosted on GitHub Pages using Markdown. The template provides a consistent design system aligned with Caltech branding while allowing content creators to focus on writing exhibit content in an accessible, easy-to-use format.
+Archives Exhibit Builder is a template repository that enables Caltech Archives & Special Collections to create standalone online exhibits. The system allows the archives team to develop content in Markdown and host relevant images. When changes are committed to the main branch, the site automatically rebuilds and deploys to GitHub Pages as a preview. Once the exhibit is ready, a manual GitHub Action publishes the static files to S3, where the live site is hosted at a branded Caltech Library URL. The template provides a consistent design that aligns with the Caltech Library Design System while allowing content creators to focus on writing exhibit content in an accessible, easy-to-use format.
 
 ## Technology
 
-This template uses a static site generation approach that converts Markdown content into styled HTML pages:
+This template uses a static site generation approach that converts Markdown content into styled HTML pages using a Pandoc template:
 
 - **Content Creation**: Exhibit content is written in Markdown (`.md` files), making it easy to write and maintain without HTML knowledge
 - **Pandoc**: A universal document converter that transforms Markdown into HTML using a custom template
 - **Lua Filter**: Custom image processing filter (`figures.lua`) that applies alignment and styling classes to images
 - **YAML Configuration**: Structured configuration for menus and front matter metadata
 - **Front Matter**: YAML metadata at the top of each Markdown file controls page-specific design and settings
-- **Build Script**: Automated bash script (`build.sh`) that processes all content files
+- **Build Script**: Automated bash script (`build.sh`) that processes all content files and outputs them to a `_site/` directory
+- **GitHub Actions**: Two workflows manage deployment: `Preview Changes (automated)` automatically deploys to GitHub Pages for preview, `Publish Site (Manual)` manually publishes to S3 for production
 
 ## Building Your Menu with YAML
 
@@ -94,60 +95,53 @@ Images in Markdown can be styled using Pandoc's attribute syntax. The Lua filter
 
 ## Building Your Site
 
-To generate HTML from your Markdown content:
+The build process is handled automatically by GitHub Actions. You don't need to run the build script manually. It will run everytime a commit is made to the main branch. However, if you want to build locally for testing you can run:
 
 ```bash
 ./build.sh
 ```
 
 This script will:
-1. Clean and recreate the `_site/` directory
+1. Clean and recreate the `_site/` directory (temporary build location)
 2. Copy static assets (CSS and images) to `_site/`
 3. Process all `.md` files in the `content/` directory
 4. Apply the Pandoc template and Lua filters
 5. Generate HTML files in the `_site/` directory
 
-All generated files are placed in the `_site/` directory, which is excluded from version control via `.gitignore`. This follows the Jekyll convention for static site generators.
+The `_site/` directory is temporary and excluded from version control via `.gitignore`. GitHub Actions uses this directory to deploy files to the `gh-pages` branch (for preview) or S3 (for production).
+
 
 ## Launch and Deployment
 
 This template uses a **two-stage publishing workflow**:
 
-1. **Staging (GitHub Pages)** - Automatic preview site for reviewing changes
+1. **Preview/staging (GitHub Pages)** - Automatic preview site to review changes before going live.
 2. **Production (S3)** - Manual publish to the live site when ready
 
-### Stage 1: Automatic Staging Deployment
+### Automated Preview Deployment
 
-Every time you push changes to the main branch, the site automatically deploys to GitHub Pages as a preview/staging site.
+GitHub Pages will be automatically configured the first time you commit a change to the main branch. The workflow will:
 
-**Setup:**
+1. Build your site
+2. Create a `gh-pages` branch (if it doesn't exist)
+3. Deploy your site to GitHub Pages
 
-1. **Enable GitHub Pages** in your repository:
-   - Go to **Settings** → **Pages**
-   - Under "Source", select **Deploy from a branch**
-   - Choose the `gh-pages` branch and `/ (root)` folder
-   - Click **Save**
+After your first commit, wait 1-2 minutes, then visit your preview URL:
+`https://caltechlibrary.github.io/your-repo-name/`
 
-2. **Push your changes** to the main branch - the workflow will automatically:
-   - Install Pandoc
-   - Run `./build.sh` to generate the `_site/` directory
-   - Deploy the `_site/` directory contents to the `gh-pages` branch
-   - Publish to GitHub Pages
+(Replace `your-repo-name` with your actual repository name)
 
-3. **Preview your site** at `https://[your-org].github.io/[repository-name]/`
 
-This staging site updates automatically with every commit, allowing you to review changes before publishing to production.
-
-### Stage 2: Manual Production Deployment
+### Manual Production Deployment
 
 When you're ready to publish your exhibit to the live production site, manually trigger the S3 publish workflow.
 
 **How to Publish:**
 
 1. Go to the **Actions** tab in your repository
-2. Click on **"Publish to S3"** in the left sidebar
+2. Click on **Publish Site (Manual)** in the left sidebar
 3. Click the **"Run workflow"** button
-4. Click **"Run workflow"** to confirm
+4. Click **"Run workflow"** to confirm (main branch should be selected)
 
 The workflow will:
 - Sync the `gh-pages` branch to S3
@@ -160,12 +154,3 @@ https://digital.archives.caltech.edu/exhibits/[repository-name]/
 ```
 
 The repository name becomes the URL slug for your exhibit (e.g., repository `becoming-caltech` → `/exhibits/becoming-caltech/`).
-
-### Custom Domain Setup
-
-For a custom Caltech subdomain (e.g., `your-exhibit.archives.caltech.edu`), contact the Digital Library Development (DLD) team. They will assist with:
-
-- Configuring DNS settings for your custom domain
-- Setting up the custom domain in your GitHub Pages settings
-
-**Contact**: Digital Library Development team for custom domain setup
